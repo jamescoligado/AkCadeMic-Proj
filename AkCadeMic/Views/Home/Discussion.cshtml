@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Discussion";
+}
+<style>
+    body {
+        background-color: whitesmoke;
+    }
+
+    input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid black;
+        border-radius: 2px;
+    }
+</style>
+<div class="text-center">
+    <br />
+    <h1><b>Discussions </b></h1>
+    <br />
+    <h2>List of Forums</h2>
+</div>
+<br />
+<div class="row">
+    <div class="col-8">
+        <a asp-controller="Thread" asp-action="Index"><h3>Accountancy, Business and, Management Related</h3></a>
+        <input type="text" value="Any Course Related to ABM. Research Papers Related to ABM." disabled="disabled" size="105" />
+        <br />
+        <br />
+        <a asp-controller="ThreadS" asp-action="Index"><h3>Science, Technology, Engineering, and Mathematics Related</h3></a>
+        <input type="text" value="Any Courses Related to STEM. Research Papers & Sample Codes. Tutorials & Guides, Etc.." disabled="disabled" size="105" />
+        <br />
+        <br />
+        <a asp-controller="ThreadH" asp-action="Index"><h3>Humanities and Social Sciences Related</h3></a>
+        <input type="text" value="Any Courses Related to HUMMS. Research Papers, Etc.." disabled="disabled" size="105" />
+        <br />
+        <br />
+        <a asp-controller="ThreadO" asp-action="Index"><h3>Others</h3></a>
+        <input type="text" value="Others that are not part of ABM, STEM, or HUMMS." disabled="disabled" size="105" />
+    </div>
+    <div class="col-4">
+        <br />
+        <br />
+        <br />
+        <img src="~/lib/image/forum.png" />
+    </div>
+</div>

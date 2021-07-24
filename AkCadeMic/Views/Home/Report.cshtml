@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Report";
+}
+<style>
+    body {
+        background-color: whitesmoke;
+    }
+    input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid black;
+        border-radius: 2px;
+    }
+    textarea {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid black;
+        border-radius: 2px;
+        height: 180px;
+    }
+    .button {
+        background-color: darkblue;
+        border: 2px solid black;
+        color: white;
+        text-align: center;
+        display: inline-block;
+        font-size: 20px;
+        width: 150px;
+    }
+</style>
+<div class="text-center">
+    <br />
+    <h1><b>Report A Post</b></h1>
+</div>
+<br />
+<div class="row">
+    <div class="col-6">
+        <h3><b>Email</b></h3>
+        <input type="text" name="email" placeholder="Enter Email to Report" size="50" />
+        <br />
+        <h3><b>Forum</b></h3>
+        <input type="text" name="forum" placeholder="Enter Forum" size="50" />
+        <br />
+        <h3><b>Subject</b></h3>
+        <input type="text" name="subject" placeholder="Enter Subject" size="50" />
+        <br />
+        <h3><b>Reason</b></h3>
+        <textarea name="reason" placeholder="Reason for reporting..." ></textarea>
+        <br />
+        <input class="button" style="float:right" type="submit" />
+    </div>
+    <div class="col-6">
+        <img src="~/lib/image/warning.png" width="500" height="500"/>
+    </div>
+</div>

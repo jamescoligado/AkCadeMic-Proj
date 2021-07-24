@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AkCadeMic.Models.ThreadH>
+
+@{
+    ViewData["Title"] = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-center">
+    <h1>Manage HUMSS Threads</h1>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PostIdH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BodyH)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostIdH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubjectH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BodyH)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.PostIdH">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

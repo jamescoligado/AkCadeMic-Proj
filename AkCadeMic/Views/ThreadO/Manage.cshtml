@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AkCadeMic.Models.ThreadO>
+
+@{
+    ViewData["Title"] = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-center">
+    <h1>Manage Other Threads</h1>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PostIdO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BodyO)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostIdO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodyO)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.PostIdO">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

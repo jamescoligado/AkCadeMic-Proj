@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AkCadeMic.Models.ThreadS>
+
+@{
+    ViewData["Title"] = "Manage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-center">
+    <h1>Manage STEM Threads</h1>
+</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PostIdS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubjectS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BodyS)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostIdS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubjectS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BodyS)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.PostIdS">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
