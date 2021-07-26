@@ -19,5 +19,7 @@ namespace AkCadeMic.Models
 
         [ForeignKey("ThreadId")]
         public virtual Thread Thread { get; set; }
+
+        public ApplicationUser User { get; set; }
     }
 }

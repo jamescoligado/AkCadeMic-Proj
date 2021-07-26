@@ -4,14 +4,16 @@ using AkCadeMic.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AkCadeMic.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210726032736_SeventhCreate")]
+    partial class SeventhCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -130,6 +132,9 @@ namespace AkCadeMic.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ThreadHPostIdH")
+                        .HasColumnType("int");
+
                     b.Property<int>("ThreadIdH")
                         .HasColumnType("int");
 
@@ -138,37 +143,13 @@ namespace AkCadeMic.Migrations
 
                     b.HasKey("IdH");
 
+                    b.HasIndex("ThreadHPostIdH");
+
                     b.HasIndex("ThreadIdH");
 
                     b.HasIndex("UserHId");
 
                     b.ToTable("RepliesH");
-                });
-
-            modelBuilder.Entity("AkCadeMic.Models.ReplyO", b =>
-                {
-                    b.Property<int>("IdO")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("TextO")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ThreadIdO")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserOId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("IdO");
-
-                    b.HasIndex("ThreadIdO");
-
-                    b.HasIndex("UserOId");
-
-                    b.ToTable("RepliesO");
                 });
 
             modelBuilder.Entity("AkCadeMic.Models.ReplyS", b =>
@@ -498,8 +479,12 @@ namespace AkCadeMic.Migrations
 
             modelBuilder.Entity("AkCadeMic.Models.ReplyH", b =>
                 {
-                    b.HasOne("AkCadeMic.Models.ThreadH", "ThreadH")
+                    b.HasOne("AkCadeMic.Models.ThreadH", null)
                         .WithMany("RepliesH")
+                        .HasForeignKey("ThreadHPostIdH");
+
+                    b.HasOne("AkCadeMic.Models.ThreadS", "ThreadH")
+                        .WithMany()
                         .HasForeignKey("ThreadIdH")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -511,23 +496,6 @@ namespace AkCadeMic.Migrations
                     b.Navigation("ThreadH");
 
                     b.Navigation("UserH");
-                });
-
-            modelBuilder.Entity("AkCadeMic.Models.ReplyO", b =>
-                {
-                    b.HasOne("AkCadeMic.Models.ThreadO", "ThreadO")
-                        .WithMany("RepliesO")
-                        .HasForeignKey("ThreadIdO")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AkCadeMic.Models.ApplicationUser", "UserO")
-                        .WithMany()
-                        .HasForeignKey("UserOId");
-
-                    b.Navigation("ThreadO");
-
-                    b.Navigation("UserO");
                 });
 
             modelBuilder.Entity("AkCadeMic.Models.ReplyS", b =>
@@ -642,11 +610,6 @@ namespace AkCadeMic.Migrations
             modelBuilder.Entity("AkCadeMic.Models.ThreadH", b =>
                 {
                     b.Navigation("RepliesH");
-                });
-
-            modelBuilder.Entity("AkCadeMic.Models.ThreadO", b =>
-                {
-                    b.Navigation("RepliesO");
                 });
 
             modelBuilder.Entity("AkCadeMic.Models.ThreadS", b =>

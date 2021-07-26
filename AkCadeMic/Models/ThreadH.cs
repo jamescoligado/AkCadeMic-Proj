@@ -24,5 +24,6 @@ namespace AkCadeMic.Models
         public ApplicationUser UserH { get; set; }
 
         public DateTime DateAdded { get; set; }
+        public ICollection<ReplyH> RepliesH { get; set; }
     }
 }

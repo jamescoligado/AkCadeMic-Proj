@@ -22,5 +22,8 @@ namespace AkCadeMic.Data
         public DbSet<ThreadO> ThreadsO { get; set; }
         public DbSet<ThreadJ> ThreadsJ { get; set; }
         public DbSet<Reply> Replies { get; set; }
+        public DbSet<ReplyS> RepliesS { get; set; }
+        public DbSet<ReplyH> RepliesH { get; set; }
+        public DbSet<ReplyO> RepliesO { get; set; }
     }
 }

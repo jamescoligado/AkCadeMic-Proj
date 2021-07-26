@@ -22,7 +22,7 @@ namespace AkCadeMic.Models
         [Display(Name = "Email")]
         public string EmailS { get; set; }
         public ApplicationUser UserS { get; set; }
-
         public DateTime DateAdded { get; set; }
+        public ICollection<ReplyS> RepliesS { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using AkCadeMic.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AkCadeMic.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210726033654_EightCreate")]
+    partial class EightCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -159,12 +161,17 @@ namespace AkCadeMic.Migrations
                     b.Property<int>("ThreadIdO")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ThreadOPostIdO")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserOId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("IdO");
 
                     b.HasIndex("ThreadIdO");
+
+                    b.HasIndex("ThreadOPostIdO");
 
                     b.HasIndex("UserOId");
 
@@ -515,11 +522,15 @@ namespace AkCadeMic.Migrations
 
             modelBuilder.Entity("AkCadeMic.Models.ReplyO", b =>
                 {
-                    b.HasOne("AkCadeMic.Models.ThreadO", "ThreadO")
-                        .WithMany("RepliesO")
+                    b.HasOne("AkCadeMic.Models.ThreadS", "ThreadO")
+                        .WithMany()
                         .HasForeignKey("ThreadIdO")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("AkCadeMic.Models.ThreadO", null)
+                        .WithMany("RepliesO")
+                        .HasForeignKey("ThreadOPostIdO");
 
                     b.HasOne("AkCadeMic.Models.ApplicationUser", "UserO")
                         .WithMany()

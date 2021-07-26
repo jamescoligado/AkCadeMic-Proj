@@ -56,10 +56,13 @@ namespace AkCadeMic.Controllers
         [HttpPost]
         public IActionResult Comment(Reply record)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
             var comment = new Reply()
             {
                 Text = record.Text,
-                ThreadId = record.ThreadId
+                ThreadId = record.ThreadId,
+                User = user
             };
 
             _context.Replies.Add(comment);

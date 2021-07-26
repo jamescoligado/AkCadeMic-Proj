@@ -57,6 +57,28 @@
                             </span>
                         </div>
                     </div>
+                    <hr />
+                    <h4 style="font-weight:bold;">Comments</h4>
+                    <br />
+                    @foreach (var reply in item.RepliesS)
+                    {
+                        <span>
+                            @reply.UserS
+                        </span>
+                        <span>
+                            @reply.TextS
+                            <br />
+                        </span>
+                    }
+                    <br />
+                    @using (Html.BeginForm("Comment", "ThreadS", FormMethod.Post))
+                    {
+                        <input type="text" name="TextS" stlye="width:100%; height:100px; font-size:20px; margin-top:10px" />
+                        <input type="hidden" name="ThreadIdS" value="@item.PostIdS" />
+                        <input type="hidden" name="UserS" value="@item.UserS" />
+                        <br />
+                        <input type="submit" value="Post Reply" class="btn btn-success" style="margin-top:10px" />
+                    }
                 </td>
             </tr>
         }

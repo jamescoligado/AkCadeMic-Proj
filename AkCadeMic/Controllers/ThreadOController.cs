@@ -22,6 +22,7 @@ namespace AkCadeMic.Controllers
         public IActionResult Index()
         {
             var list = _context.ThreadsO.Include(x => x.UserO).ToList();
+            var comment = _context.ThreadsO.Include(y => y.RepliesO).ToList();
             return View(list);
         }
         [Authorize]
@@ -44,6 +45,24 @@ namespace AkCadeMic.Controllers
             };
 
             _context.ThreadsO.Add(ThreadO);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Comment(ReplyO record)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var comment = new ReplyO()
+            {
+                TextO = record.TextO,
+                ThreadIdO = record.ThreadIdO,
+                UserO = user
+            };
+
+            _context.RepliesO.Add(comment);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
