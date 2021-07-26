@@ -48,23 +48,23 @@
                             @item.DateAdded.ToString("MM/dd/yyyy hh:mm tt")
                         </span>
                         <div style="text-align:center;position:center;">
-                            <span style="font-size:20px;font-weight:bold;">
+                            <span style="font-size:35px;font-weight:bold;">
                                 @Html.DisplayFor(modelItem => item.SubjectS)
                             </span>
                             <br />
-                            <span>
+                            <span style="font-size:20px;">
                                 @Html.DisplayFor(modelItem => item.BodyS)
                             </span>
                         </div>
                     </div>
                     <hr />
                     <h4 style="font-weight:bold;">Comments</h4>
-                    <br />
                     @foreach (var reply in item.RepliesS)
                     {
-                        <span>
+                        <span style="font-size:20px; color:darkblue;">
                             @reply.UserS
                         </span>
+                        <br />
                         <span>
                             @reply.TextS
                             <br />
