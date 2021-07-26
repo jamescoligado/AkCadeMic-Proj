@@ -6,8 +6,6 @@ namespace AkCadeMic.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Comments");
 
             migrationBuilder.AddColumn<string>(
                 name: "Email",
@@ -22,18 +20,6 @@ namespace AkCadeMic.Migrations
                 name: "Email",
                 table: "Threads");
 
-            migrationBuilder.CreateTable(
-                name: "Comments",
-                columns: table => new
-                {
-                    CommentId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Text = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Comments", x => x.CommentId);
-                });
         }
     }
 }
