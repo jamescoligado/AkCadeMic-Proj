@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 using AkCadeMic.Data;
 using Microsoft.AspNetCore.Authorization;
+using System.Net;
+using System.Net.Mail;
 
 namespace AkCadeMic.Controllers
 {
@@ -52,6 +54,42 @@ namespace AkCadeMic.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact(Contact record)
+        {
+            using (MailMessage mail = new MailMessage("akcademic@gmail.com", record.Email))
+            {
+                mail.Subject = record.Subject;
+
+                string message = "Hello, " + record.SenderName + "<br/><br/>" +
+                    "We have received your message. Here are the details: <br/> <br/>" +
+                    "Contact Number: <strong>" + record.ContactNo + "<strong/><br/>" +
+                    "Message:<br/><strong>" + record.Message + "</strong><br/><br/>" +
+                    "Please wait for our response. Thank you!";
+                mail.Body = message;
+                mail.IsBodyHtml = true;
+
+                using (SmtpClient smtp = new SmtpClient())
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    NetworkCredential NetworkCred =
+                        new NetworkCredential("akcademic@gmail.com", "SAbenilde119!");
+                    smtp.UseDefaultCredentials = true;
+                    smtp.Credentials = NetworkCred;
+                    smtp.EnableSsl = true;
+                    smtp.Port = 587;
+                    smtp.Send(mail);
+                    ViewBag.Message = "Message sent";
+                }
+            }
+            return View();
         }
     }
 }

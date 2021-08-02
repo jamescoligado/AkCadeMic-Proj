@@ -25,5 +25,6 @@ namespace AkCadeMic.Data
         public DbSet<ReplyS> RepliesS { get; set; }
         public DbSet<ReplyH> RepliesH { get; set; }
         public DbSet<ReplyO> RepliesO { get; set; }
+        public DbSet<AkCadeMic.Models.Contact> Contact { get; set; }
     }
 }

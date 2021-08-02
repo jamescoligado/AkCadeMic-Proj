@@ -21,5 +21,8 @@ namespace AkCadeMic.Models
         public virtual ThreadO ThreadO { get; set; }
 
         public ApplicationUser UserO { get; set; }
+
+        public string EmailH { get; set; }
+        public DateTime DateAdded { get; set; }
     }
 }

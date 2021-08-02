@@ -11,15 +11,17 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PostIdO)
+                Post Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SubjectO)
+                Subject
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BodyO)
+                Body
             </th>
-            <th></th>
+            <th>
+                Action
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -36,7 +38,9 @@
                 @Html.DisplayFor(modelItem => item.BodyO)
             </td>
             <td>
-                <a asp-action="Delete" asp-route-id="@item.PostIdO">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.PostIdO">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.PostIdO"
+                   onclick='return confirm("Are you sure?");'>Delete</a>
             </td>
         </tr>
         }

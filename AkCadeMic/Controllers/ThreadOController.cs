@@ -55,11 +55,14 @@ namespace AkCadeMic.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var Email = User.FindFirstValue(ClaimTypes.Email);
             var comment = new ReplyO()
             {
                 TextO = record.TextO,
                 ThreadIdO = record.ThreadIdO,
-                UserO = user
+                UserO = user,
+                EmailH = Email,
+                DateAdded = DateTime.Now
             };
 
             _context.RepliesO.Add(comment);
@@ -114,6 +117,31 @@ namespace AkCadeMic.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteComment(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var comment = _context.RepliesO.Where(i => i.IdO == id).SingleOrDefault();
+            if (comment == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            _context.RepliesO.Remove(comment);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ManageComments()
+        {
+            var list = _context.RepliesO.ToList();
+            return View(list);
         }
 
         public IActionResult Manage()

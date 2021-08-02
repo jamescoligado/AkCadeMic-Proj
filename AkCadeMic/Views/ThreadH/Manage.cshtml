@@ -11,34 +11,38 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PostIdH)
+                Post Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SubjectH)
+                Subject
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BodyH)
+                Body
             </th>
-            <th></th>
+            <th>
+                Action
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PostIdH)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SubjectH)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BodyH)
-                </td>
-                <td>
-                    <a asp-action="Delete" asp-route-id="@item.PostIdH">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostIdH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodyH)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PostIdH">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.PostIdH"
+                   onclick='return confirm("Are you sure?");'>Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

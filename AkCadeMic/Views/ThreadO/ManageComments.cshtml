@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AkCadeMic.Models.ReplyO>
+
+@{
+    ViewData["Title"] = "ManageComments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-center">
+    <h1>Manage Others Comments</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Post Id
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Text
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.ThreadIdO)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.EmailH)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TextO)
+                </td>
+                <td>
+                    <a asp-action="DeleteComment" asp-route-id="@item.IdO">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

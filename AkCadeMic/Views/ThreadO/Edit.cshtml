@@ -1,0 +1,71 @@
+﻿@model AkCadeMic.Models.ThreadO
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        background-color: whitesmoke;
+    }
+
+    input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid black;
+        border-radius: 2px;
+    }
+
+    textarea {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid black;
+        border-radius: 2px;
+        height: 180px;
+    }
+
+    .button {
+        background-color: darkblue;
+        border: 2px solid black;
+        color: white;
+        text-align: center;
+        display: inline-block;
+        font-size: 20px;
+        width: 150px;
+    }
+</style>
+<div class="text-center">
+    <br />
+    <h1><b>Edit Thread</b></h1>
+</div>
+<br />
+<div class="row">
+    <div class="col-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PostIdO" />
+            <div class="form-group">
+                <label asp-for="SubjectO" class="control-label"></label>
+                <input asp-for="SubjectO" class="form-control" />
+                <span asp-validation-for="SubjectO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h3><b>Body</b></h3>
+                <textarea asp-for="BodyO" placeholder="Body..."></textarea>
+                <span asp-validation-for="BodyO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+                <a style="float:right;" asp-action="Index">Back to Threads</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <br />
+        <img src="~/lib/image/post.png" />
+    </div>
+</div>

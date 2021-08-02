@@ -1,12 +1,12 @@
-﻿@model IEnumerable<AkCadeMic.Models.ThreadS>
+﻿@model IEnumerable<AkCadeMic.Models.ReplyS>
 
 @{
-    ViewData["Title"] = "Manage";
+    ViewData["Title"] = "ManageComments";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="text-center">
-    <h1>Manage STEM Threads</h1>
-</div>
+    <h1>Manage STEM Comments</h1>
+
     <table class="table">
         <thead>
             <tr>
@@ -14,10 +14,10 @@
                     Post Id
                 </th>
                 <th>
-                    Subject
+                    Email
                 </th>
                 <th>
-                    Body
+                    Text
                 </th>
                 <th>
                     Action
@@ -29,20 +29,19 @@
             {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PostIdS)
+                    @Html.DisplayFor(modelItem => item.ThreadIdS)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SubjectS)
+                    @Html.DisplayFor(modelItem => item.EmailS)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.BodyS)
+                    @Html.DisplayFor(modelItem => item.TextS)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.PostIdS">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.PostIdS"
-                       onclick='return confirm("Are you sure?");'>Delete</a>
+                    <a asp-action="DeleteComment" asp-route-id="@item.IdS">Delete</a>
                 </td>
             </tr>
             }
         </tbody>
     </table>
+</div>
