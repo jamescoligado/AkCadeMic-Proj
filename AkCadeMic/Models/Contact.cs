@@ -8,24 +8,21 @@ namespace AkCadeMic.Models
 {
     public class Contact
     {
-        [Key]
-        public int Id { get; set; }
-
         [Display(Name = "Sender Name")]
         [Required(ErrorMessage = "Required.")]
         public string SenderName { get; set; }
 
-        [DataType(DataType.EmailAddress, ErrorMessage ="Invalid format.")]
-        [Required(ErrorMessage ="Required.")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Invalid format.")]
+        [Required(ErrorMessage = "Required.")]
         public string Email { get; set; }
 
-        [Display(Name ="Contact Number")]
+        [Display(Name = "Contact Number")]
         public string ContactNo { get; set; }
 
-        [Required(ErrorMessage ="Required.")]
+        [Required(ErrorMessage = "Required.")]
         public string Subject { get; set; }
 
-        [Required(ErrorMessage ="Required.")]
+        [Required(ErrorMessage = "Required.")]
         [DataType(DataType.MultilineText)]
         public string Message { get; set; }
     }

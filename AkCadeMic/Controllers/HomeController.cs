@@ -36,24 +36,9 @@ namespace AkCadeMic.Controllers
         {
             return View();
         }
-        public IActionResult Report()
-        {
-            return View();
-        }
         public IActionResult AboutUs()
         {
             return View();
-        }
-        public IActionResult ContactUs()
-        {
-            return View();
-        }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
         public IActionResult Contact()
@@ -72,24 +57,29 @@ namespace AkCadeMic.Controllers
                     "We have received your message. Here are the details: <br/> <br/>" +
                     "Contact Number: <strong>" + record.ContactNo + "<strong/><br/>" +
                     "Message:<br/><strong>" + record.Message + "</strong><br/><br/>" +
-                    "Please wait for our response. Thank you!";
+                    "Please wait for our response. Thank you! 🎓";
                 mail.Body = message;
                 mail.IsBodyHtml = true;
 
                 using (SmtpClient smtp = new SmtpClient())
                 {
                     smtp.Host = "smtp.gmail.com";
-                    NetworkCredential NetworkCred =
-                        new NetworkCredential("akcademic@gmail.com", "SAbenilde119!");
-                    smtp.UseDefaultCredentials = true;
-                    smtp.Credentials = NetworkCred;
-                    smtp.EnableSsl = true;
                     smtp.Port = 587;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new System.Net.NetworkCredential("akcademic@gmail.com", "sabenilde119");
+                    smtp.EnableSsl = true;
                     smtp.Send(mail);
-                    ViewBag.Message = "Message sent";
+                    ViewBag.Message = "Message sent.";
                 }
             }
             return View();
         }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
     }
 }
