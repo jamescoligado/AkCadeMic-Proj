@@ -8,6 +8,9 @@ namespace AkCadeMic.Models
 {
     public class Contact
     {
+        [Key]
+        public int Id { get; set; }
+
         [Display(Name = "Sender Name")]
         [Required(ErrorMessage = "Required.")]
         public string SenderName { get; set; }
