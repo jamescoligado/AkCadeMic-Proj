@@ -12,7 +12,7 @@ namespace AkCadeMic.Models
         [Key]
         public int IdO { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Required.")]
         public string TextO { get; set; }
 
         public int ThreadIdO { get; set; }
